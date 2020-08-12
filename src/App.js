@@ -50,7 +50,7 @@ function App() {
           name="name2"
         ></TextField>
 
-        <FormControl>
+        <FormControl error={errors.select}>
           <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
           <Controller
             as={
@@ -71,9 +71,10 @@ function App() {
                 <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             }
-            name="firstName"
+            name="select"
             control={control}
             defaultValue=""
+            rules={{ required: true }}
           />
 
           <FormHelperText>Some important helper text</FormHelperText>
