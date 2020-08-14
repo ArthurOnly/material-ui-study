@@ -14,8 +14,13 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  CircularProgress,
+  SimpleDialog,
+  Button,
 } from "@material-ui/core"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+
+import DialogBox from "./dialog"
 
 function App() {
   const { register, handleSubmit, control, errors } = useForm()
@@ -27,8 +32,12 @@ function App() {
     setExpanded(isExpanded ? panel : false)
   }
 
+  const [dialog, setDialog] = useState(false)
+
   return (
     <Container maxWidth="lg">
+      {dialog && <DialogBox openDialog={dialog} />}
+      <Button onClick={() => setDialog(true)}>button</Button>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="app-content"
