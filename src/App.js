@@ -27,16 +27,24 @@ function App() {
   const onSubmit = data => console.log(data)
 
   //acordion
-  const [expanded, setExpanded] = React.useState(false)
+  const [expanded, setExpanded] = useState(false)
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false)
   }
+  //end
 
   const [dialog, setDialog] = useState(false)
+  const [selectedValue, setSelectedValue] = useState("")
+
+  const handleClose = value => {
+    setDialog(false)
+    setSelectedValue(value)
+    console.log(value)
+  }
 
   return (
     <Container maxWidth="lg">
-      {dialog && <DialogBox openDialog={dialog} />}
+      {dialog && <DialogBox open={dialog} onClose={handleClose} />}
       <Button onClick={() => setDialog(true)}>button</Button>
       <form
         onSubmit={handleSubmit(onSubmit)}
