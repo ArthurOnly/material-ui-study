@@ -14,9 +14,11 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  CircularProgress,
-  SimpleDialog,
   Button,
+  Fade,
+  Chip,
+  Badge,
+  Styled,
 } from "@material-ui/core"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
@@ -44,6 +46,7 @@ function App() {
 
   return (
     <Container maxWidth="lg">
+      <Chip label="Basic" color="primary" />
       {dialog && <DialogBox open={dialog} onClose={handleClose} />}
       <Button onClick={() => setDialog(true)}>button</Button>
       <form
@@ -51,24 +54,28 @@ function App() {
         className="app-content"
         id="app-content"
       >
-        <TextField
-          type="name"
-          helperText="type any"
-          size="small"
-          variant="filled"
-          label="label"
-          inputRef={register}
-          name="name"
-        ></TextField>
-        <TextField
-          type="name"
-          helperText="type any"
-          size="small"
-          variant="standard"
-          label="label"
-          inputRef={register}
-          name="name1"
-        ></TextField>
+        <Fade in>
+          <TextField
+            type="name"
+            helperText="type any"
+            size="small"
+            variant="filled"
+            label="label"
+            inputRef={register}
+            name="name"
+          ></TextField>
+        </Fade>
+        <Badge badgeContent={4} color="primary">
+          <TextField
+            type="name"
+            helperText="type any"
+            size="small"
+            variant="standard"
+            label="label"
+            inputRef={register}
+            name="name1"
+          ></TextField>
+        </Badge>
         <TextField
           type="name"
           helperText="type any"
